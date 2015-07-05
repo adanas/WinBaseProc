@@ -25,22 +25,22 @@ BOOL regist_base_proc(HINSTANCE hInstance)
 
 	memset(&wndc_ex, 0, sizeof(wndc_ex));
 
-	wndc_ex.cbSize = sizeof(WNDCLASSEX);
-	wndc_ex.style = 0;
-	wndc_ex.lpfnWndProc = ClsBaseProc::call_wnd_proc;
-	wndc_ex.cbClsExtra = 0;
-	wndc_ex.cbWndExtra = 0;
-	wndc_ex.hInstance = hInstance;
-	wndc_ex.hIcon = NULL;
-	wndc_ex.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wndc_ex.cbSize        = sizeof(WNDCLASSEX);
+	wndc_ex.style         = 0;
+	wndc_ex.lpfnWndProc   = ClsBaseProc::call_wnd_proc;
+	wndc_ex.cbClsExtra    = 0;
+	wndc_ex.cbWndExtra    = 0;
+	wndc_ex.hInstance     = hInstance;
+	wndc_ex.hIcon         = NULL;
+	wndc_ex.hCursor       = LoadCursor(NULL, IDC_ARROW);
 	wndc_ex.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH);
-	wndc_ex.lpszMenuName = NULL;
+	wndc_ex.lpszMenuName  = NULL;
 	wndc_ex.lpszClassName = BASE_WND;
-	wndc_ex.hIconSm = NULL;
+	wndc_ex.hIconSm       = NULL;
 
 	ret_wnd = RegisterClassEx(&wndc_ex);
 
-	wndc_ex.lpfnWndProc = ClsBaseProc::call_mdi_proc;
+	wndc_ex.lpfnWndProc   = ClsBaseProc::call_mdi_proc;
 	wndc_ex.lpszClassName = BASE_MDI;
 
 	ret_mdi = RegisterClassEx(&wndc_ex);
