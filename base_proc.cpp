@@ -51,11 +51,12 @@ ClsBaseProc::~ClsBaseProc()
 
 BOOL ClsBaseProc::attach(HWND hWnd)
 {
-	if (!hWnd)
+	if(!hWnd)
+    {
 		return FALSE;
+    }
 
-	m_hWnd = hWnd;
-
+	m_hWnd   = hWnd;
 	m_is_dlg = (GetWindowLong(m_hWnd, DWL_DLGPROC) != 0);
 
 	SetProp(m_hWnd, PROPKEY_CLASS, (HANDLE) this);
@@ -72,16 +73,20 @@ BOOL ClsBaseProc::attach(HWND hWnd)
 
 HWND ClsBaseProc::detach()
 {
-	if (!m_hWnd)
+	if(!m_hWnd)
+    {
 		return NULL;
+    }
 
-	if (m_org_proc)
+	if(m_org_proc)
+    {
 		SetWindowLong(m_hWnd, (m_is_dlg ? DWL_DLGPROC : GWL_WNDPROC), (LONG) m_org_proc);
+    }
 
 	RemoveProp(m_hWnd, PROPKEY_CLASS);
 
 	HWND hWnd = m_hWnd;
-	m_hWnd = NULL;
+	m_hWnd    = NULL;
 
 	return hWnd;
 } // End Of Fnc
