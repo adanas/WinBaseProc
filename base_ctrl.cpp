@@ -76,8 +76,21 @@ BOOL ClsBaseCtrl::create_ctrl(DWORD dwExStyle, LPCTSTR lpClassName, DWORD dwStyl
 		return FALSE;
 	} // End Of If
 	
-	m_isCreate = attach(CreateWindowEx(dwExStyle, lpClassName, NULL, dwStyle,
-		x, y, width, height, hwndParent, (HMENU) id, get_hInstance(), NULL));
+	m_isCreate = attach(
+            CreateWindowEx(
+                dwExStyle,
+                lpClassName,     /* クラス名             */
+                NULL, 
+                dwStyle,
+		        x,               /* x座標                */
+                y,               /* y座標                */
+                width,           /* 幅                   */
+                height,          /* 高さ                 */
+                hwndParent,      /* 親ウィンドウハンドル */ 
+                (HMENU)id,       /* コントロールID       */
+                get_hInstance(), /* インスタンスハンドル */
+                NULL
+                ));
 
 	return m_isCreate;
 } // End Of Fnc
