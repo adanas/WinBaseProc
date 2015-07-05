@@ -1,0 +1,2 @@
+# WinBaseProc
+Windowsアプリケーション。ベースプロシージャ。
